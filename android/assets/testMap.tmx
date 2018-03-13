@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
- <tileset firstgid="1" source="test.tsx"/>
- <layer name="Rutelag 1" width="100" height="100">
-  <data encoding="base64" compression="zlib">
-   eJzt1kkOhDAMBEC2j7M8zE+b5gFzCUEgUSX50BdLMcjJMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbzGmptScWi7kXn3me4/7emtqS+2p40Lu1We/97ivN+bHnFJzahnbc68+Z/6yNeffUnvqGNtzrz77x79HZlGZQWUWlZlUa+7V58xPz+RJ2RWVHVHZFZWdUa25V5/p498jd2nlDq3cpZU7tVpzrz5nfnomT8pbs/LGrLw1K6u7WnOvPtPHvwfw3w+Q07x5
-  </data>
- </layer>
-</map>

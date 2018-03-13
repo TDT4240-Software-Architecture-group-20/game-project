@@ -23,4 +23,8 @@ public abstract class GeneralObject {
         sb.draw(sprite.getTexture(), position.x, position.y);
         sb.end();
     }
+
+    public Sprite getSprite() {
+        return this.sprite;
+    }
 }

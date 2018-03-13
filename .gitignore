@@ -124,7 +124,3 @@ Thumbs.db
 !/ios-moe/xcode/*.xcodeproj/project.pbxproj
 /ios-moe/xcode/native/
 
-## Own stuff
-
-build.gradle
-gradle-wrapper.properties
