@@ -2,9 +2,17 @@ package car.superfun.game.menus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+
+import car.superfun.game.actor.ButtonActor;
+import car.superfun.game.AndroidLauncher;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
@@ -15,32 +23,56 @@ import car.superfun.game.states.GameStateManager;
 import car.superfun.game.states.State;
 
 public class MainMenu extends State {
-    private Texture background, hostButton, joinButton, settings, extraSettings;
+    private Texture background;
+    public static Stage stage = new Stage(new ScreenViewport());
     private AndroidLauncher androidLauncher;
 
-    public MainMenu(AndroidLauncher androidLauncher){
-        this.androidLauncher = androidLauncher;
-        background = new Texture("background.png");
-        hostButton = new Texture("menu-buttons/host.png");
-        joinButton = new Texture("menu-buttons/join.png");
-        settings = new Texture("menu-buttons/settings.png");
-        extraSettings = new Texture(("menu-buttons/settings.png"));
-    }
+    public MainMenu(AndroidLauncher aLauncher){
+        this.androidLauncher = aLauncher;
 
-    @Override
-    public void handleInput() {
-        if(Gdx.input.justTouched()){
-            if(isOnSettings()){
-                androidLauncher.signOut();
-                GameStateManager.getInstance().push(new SettingsMenu());
-                //GameStateManager.getInstance().push(new GladiatorMode());
+        background = new Texture("background.png");
+
+        Table table = new Table();
+        table.setWidth(stage.getWidth());
+        table.align(Align.center|Align.top);
+
+        table.setPosition(0,Gdx.graphics.getHeight());
+
+        ButtonActor settingsButton = new ButtonActor(new Sprite(new Texture("menu-buttons/settings.png")));
+        settingsButton.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                //androidLauncher.signOut();
+                //GameStateManager.getInstance().push(new SettingsMenu());
+                GameStateManager.getInstance().push(new Leaderboard());
+                return true;
             }
-            if(isOnJoin()){
+        });
+
+        ButtonActor extraSettingsButton = new ButtonActor(new Sprite(new Texture("menu-buttons/settings.png")));
+        extraSettingsButton.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                GameStateManager.getInstance().push(new GladiatorMode());
+                return true;
+            }
+        });
+
+        ButtonActor joinButton = new ButtonActor(new Sprite(new Texture("menu-buttons/join.png")));
+        joinButton.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 androidLauncher.startQuickGame();
                 GameStateManager.getInstance().push(new GameBrowser());
+                return true;
             }
-            if(isOnHost()){
-//              GameStateManager.getInstance().push(new HostMenu());
+        });
+
+        ButtonActor hostButton = new ButtonActor(new Sprite(new Texture("menu-buttons/host.png")));
+        hostButton.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                GameStateManager.getInstance().push(new HostMenu());
                 // starting PlayState instead, so that we can test the game
                 RaceMode race = new RaceMode(androidLauncher, false);
 
@@ -50,12 +82,24 @@ public class MainMenu extends State {
 //                race.setOpponentCars(opponentCars);
 
                 GameStateManager.getInstance().push(race);
+                return true;
             }
-            if(isOnExtraSettings()){
-                GameStateManager.getInstance().push(new GladiatorMode());
-            }
-        }
+        });
+
+        table.add(extraSettingsButton).expandX().top().left();
+        table.add(settingsButton).expandX().top().right().padBottom(120);
+        table.row();
+        table.add(joinButton).padBottom(120).colspan(2);
+        table.row();
+        table.add(hostButton).colspan(2);
+
+        stage.addActor(table);
+
+        Gdx.input.setInputProcessor(stage);
     }
+
+    @Override
+    public void handleInput() { }
 
     @Override
     public void update(float dt) {
@@ -65,56 +109,15 @@ public class MainMenu extends State {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        sb.draw(joinButton, Gdx.graphics.getWidth()/2-joinButton.getWidth()/2, Gdx.graphics.getHeight()/2-(joinButton.getHeight()/2)+150);
-        sb.draw(hostButton, Gdx.graphics.getWidth()/2-hostButton.getWidth()/2, Gdx.graphics.getHeight()/2-(hostButton.getHeight()/2)-150);
-        sb.draw(settings, 1600, 890);
-        sb.draw(extraSettings, 1400, 890);
+        sb.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
         sb.end();
+        stage.act(Gdx.graphics.getDeltaTime());
+        stage.draw();
     }
 
     @Override
     public void dispose() {
-        settings.dispose();
-        extraSettings.dispose();
-        hostButton.dispose();
-        joinButton.dispose();
         background.dispose();
-    }
-
-    public boolean isOnJoin(){
-        Rectangle textureBounds = new Rectangle((Gdx.graphics.getWidth()/2-joinButton.getWidth()/2), (Gdx.graphics.getHeight()/2+(joinButton.getHeight()/2)-350), (joinButton.getWidth()), joinButton.getHeight());
-        if(textureBounds.contains(Gdx.input.getX(), Gdx.input.getY())){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public boolean isOnHost(){
-        Rectangle textureBounds = new Rectangle((Gdx.graphics.getWidth()/2-hostButton.getWidth()/2), (Gdx.graphics.getHeight()/2+(hostButton.getHeight()/2)-50), (hostButton.getWidth()), hostButton.getHeight());
-        if(textureBounds.contains(Gdx.input.getX(), Gdx.input.getY())){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public boolean isOnSettings(){
-        Circle textureBounds = new Circle(1600+settings.getWidth()/2, (Gdx.graphics.getHeight() - 890)-settings.getHeight()/2, settings.getWidth()/2);
-        if(textureBounds.contains(Gdx.input.getX(), Gdx.input.getY())){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public boolean isOnExtraSettings(){
-        Circle textureBounds = new Circle(1400+settings.getWidth()/2, (Gdx.graphics.getHeight() - 890)-settings.getHeight()/2, settings.getWidth()/2);
-        if(textureBounds.contains(Gdx.input.getX(), Gdx.input.getY())){
-            return true;
-        }else{
-            return false;
-        }
+        stage.dispose();
     }
 }

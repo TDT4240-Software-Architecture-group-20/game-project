@@ -46,10 +46,6 @@ public class HostMenu extends State{
 
     private boolean isOnBack(){
         Circle textureBounds = new Circle(120+backButton.getWidth()/2, (Gdx.graphics.getHeight() - 890)-backButton.getHeight()/2, backButton.getWidth()/2);
-        if(textureBounds.contains(Gdx.input.getX(), Gdx.input.getY())){
-            return true;
-        }else{
-            return false;
-        }
+        return(textureBounds.contains(Gdx.input.getX(), Gdx.input.getY()));
     }
 }
