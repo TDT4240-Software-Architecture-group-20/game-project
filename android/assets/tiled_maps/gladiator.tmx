@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="left-down" width="100" height="100" tilewidth="130" tileheight="130" infinite="0" nextobjectid="28">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="left-down" width="100" height="100" tilewidth="130" tileheight="130" infinite="0" nextobjectid="36">
  <tileset firstgid="1" source="simpleTiles.tsx"/>
  <layer name="ground" width="100" height="100">
   <data encoding="csv">
@@ -108,6 +108,20 @@
  <objectgroup name="boost_zone">
   <object id="27" x="10657.2" y="5212.15">
    <polyline points="0,0 1035.77,-8.31947 1048.25,2325.29 4.15973,2329.45 0,66.5557 969.218,66.5557 977.537,2262.9 58.2363,2262.9 62.396,128.952 906.822,124.792 910.982,2196.34 124.792,2200.5 128.952,195.507 848.586,187.188 844.426,2129.78 203.827,2133.94 207.987,257.903 786.19,257.903 790.349,2063.23 266.223,2063.23 262.063,316.14 736.273,320.3 727.953,1996.67 336.938,1992.51 328.619,428.453 690.516,428.453 690.516,1934.28 391.015,1930.12 395.175,515.807 648.918,511.647 644.759,1871.88 453.411,1871.88 457.571,582.363 590.682,586.522 599.002,1805.32 524.126,1801.16 524.126,644.759"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="starting_points">
+  <object id="32" x="3984" y="3808">
+   <point/>
+  </object>
+  <object id="33" x="9712" y="3584">
+   <point/>
+  </object>
+  <object id="34" x="9680" y="9888">
+   <point/>
+  </object>
+  <object id="35" x="3888" y="9824">
+   <point/>
   </object>
  </objectgroup>
  <layer name="objects" width="100" height="100">

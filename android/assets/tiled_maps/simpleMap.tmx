@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="left-down" width="100" height="100" tilewidth="130" tileheight="130" infinite="0" nextobjectid="57">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="left-down" width="100" height="100" tilewidth="130" tileheight="130" infinite="0" nextobjectid="61">
  <tileset firstgid="1" source="simpleTiles.tsx"/>
  <layer name="grass" width="100" height="100" locked="1">
   <data encoding="csv">
@@ -266,6 +266,20 @@
   </object>
   <object id="35" x="1670" y="10400.3">
    <polyline points="-1.375,-0.25 128.667,258.667"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="starting_points">
+  <object id="57" x="3952.15" y="1797.35">
+   <point/>
+  </object>
+  <object id="58" x="3959.35" y="2061.11">
+   <point/>
+  </object>
+  <object id="59" x="3665.32" y="2053.91">
+   <point/>
+  </object>
+  <object id="60" x="3675.41" y="1804.55">
+   <point/>
   </object>
  </objectgroup>
  <objectgroup name="goal_line" locked="1">
