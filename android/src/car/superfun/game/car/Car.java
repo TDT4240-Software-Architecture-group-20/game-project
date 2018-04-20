@@ -59,12 +59,8 @@ public class Car {
 
         shape.dispose();
 
-//        acceleration = 850.0f;
-//        steering = 175.0f;
-//        grip = 10;
-
-        acceleration = 850.0f;
-        steering = 100.0f;
+        acceleration = 25.0f;
+        steering = 4.0f;
         grip = 10;
 
         this.carController = carController;
@@ -75,7 +71,7 @@ public class Car {
         if(!render){
             return;
         }
-        frameRotation = carController.getRotation() * steering * dt;
+        frameRotation = carController.getRotation() * steering;
         Vector2 direction = this.getDirectionVector();
 
         float traction = abs(body.getLinearVelocity().dot(direction.cpy().rotate(90 + 45 * carController.getRotation())));
@@ -91,7 +87,7 @@ public class Car {
             body.setLinearVelocity(body.getLinearVelocity().rotate(velocityRotator).scl(sidewaysVelocityDampening));
         }
 
-        body.applyForceToCenter(direction.scl(carController.getForward() * acceleration * dt), true);
+        body.applyForceToCenter(direction.scl(carController.getForward() * acceleration), true);
         body.setAngularVelocity(frameRotation);
     }
 
