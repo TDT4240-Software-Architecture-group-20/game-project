@@ -1,4 +1,4 @@
-package car.superfun.game.googleGamePlayServices;
+package car.superfun.game.googlePlayGameServices;
 
 import android.app.AlertDialog;
 import android.content.Intent;

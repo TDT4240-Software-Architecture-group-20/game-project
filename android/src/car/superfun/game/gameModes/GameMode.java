@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import car.superfun.game.GlobalVariables;
-import car.superfun.game.googleGamePlayServices.GoogleGameServices;
+import car.superfun.game.googlePlayGameServices.GoogleGameServices;
 import car.superfun.game.maps.MapLoader;
 import car.superfun.game.maps.TrackBuilder;
 import car.superfun.game.cars.CarController;

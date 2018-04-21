@@ -21,10 +21,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import car.superfun.game.cars.OpponentCarController;
-import car.superfun.game.googleGamePlayServices.Communicator;
-import car.superfun.game.googleGamePlayServices.GoogleGameServices;
-import car.superfun.game.googleGamePlayServices.SetUpGame;
-import car.superfun.game.googleGamePlayServices.SignIn;
+import car.superfun.game.googlePlayGameServices.Communicator;
+import car.superfun.game.googlePlayGameServices.GoogleGameServices;
+import car.superfun.game.googlePlayGameServices.SetUpGame;
+import car.superfun.game.googlePlayGameServices.SignIn;
 import car.superfun.game.states.NewState;
 
 public class AndroidLauncher extends AndroidApplication {
