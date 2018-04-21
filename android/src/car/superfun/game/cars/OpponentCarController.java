@@ -1,4 +1,4 @@
-package car.superfun.game.car;
+package car.superfun.game.cars;
 
 import android.support.annotation.NonNull;
 

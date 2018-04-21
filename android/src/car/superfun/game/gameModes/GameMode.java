@@ -21,9 +21,9 @@ import car.superfun.game.GlobalVariables;
 import car.superfun.game.googleGamePlayServices.GoogleGameServices;
 import car.superfun.game.maps.MapLoader;
 import car.superfun.game.maps.TrackBuilder;
-import car.superfun.game.car.CarController;
-import car.superfun.game.car.LocalCarController;
-import car.superfun.game.car.OpponentCarController;
+import car.superfun.game.cars.CarController;
+import car.superfun.game.cars.LocalCarController;
+import car.superfun.game.cars.OpponentCarController;
 import car.superfun.game.scoreHandling.HandlesScore;
 import car.superfun.game.states.State;
 

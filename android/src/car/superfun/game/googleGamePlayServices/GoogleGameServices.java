@@ -6,7 +6,7 @@ import com.google.android.gms.games.multiplayer.Participant;
 
 import java.util.ArrayList;
 
-import car.superfun.game.car.OpponentCarController;
+import car.superfun.game.cars.OpponentCarController;
 import car.superfun.game.states.NewState;
 
 public interface GoogleGameServices {

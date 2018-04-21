@@ -31,7 +31,7 @@ import java.util.List;
 import car.superfun.game.AndroidLauncher;
 import car.superfun.game.states.NewState;
 import car.superfun.game.R;
-import car.superfun.game.car.OpponentCarController;
+import car.superfun.game.cars.OpponentCarController;
 
 
 public class SetUpGame {
