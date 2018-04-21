@@ -62,13 +62,10 @@ public abstract class GameMode extends State implements HandlesScore {
         camBatch = new SpriteBatch(1024, shader);
 
         world = new World(new Vector2(0, 0), true);
-        tiledMap = new MapLoader(world).load(mapPath);
-        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, camBatch);
-
-        startPositions = TrackBuilder.getPoints(tiledMap, "starting_points");
 
         localCarController = new LocalCarController(googleGameServices.getLocalParticipant());
 
+        tiledMap = new MapLoader(world).load(mapPath);
         setUpMap();
 
         Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
@@ -109,6 +106,10 @@ public abstract class GameMode extends State implements HandlesScore {
     }
 
     protected void setUpMap() {
+        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, camBatch);
+
+        startPositions = TrackBuilder.getPoints(tiledMap, "starting_points");
+
         // Set the normal walls
         FixtureDef wallDef = new FixtureDef();
         wallDef.filter.categoryBits = GlobalVariables.WALL_ENTITY;
