@@ -18,12 +18,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import car.superfun.game.GlobalVariables;
-import car.superfun.game.googleGamePlayServices.GoogleGameServices;
+import car.superfun.game.googlePlayGameServices.GoogleGameServices;
 import car.superfun.game.maps.MapLoader;
 import car.superfun.game.maps.TrackBuilder;
-import car.superfun.game.car.CarController;
-import car.superfun.game.car.LocalCarController;
-import car.superfun.game.car.OpponentCarController;
+import car.superfun.game.cars.CarController;
+import car.superfun.game.cars.LocalCarController;
+import car.superfun.game.cars.OpponentCarController;
 import car.superfun.game.scoreHandling.HandlesScore;
 import car.superfun.game.states.State;
 
@@ -62,13 +62,10 @@ public abstract class GameMode extends State implements HandlesScore {
         camBatch = new SpriteBatch(1024, shader);
 
         world = new World(new Vector2(0, 0), true);
-        tiledMap = new MapLoader(world).load(mapPath);
-        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, camBatch);
-
-        startPositions = TrackBuilder.getPoints(tiledMap, "starting_points");
 
         localCarController = new LocalCarController(googleGameServices.getLocalParticipant());
 
+        tiledMap = new MapLoader(world).load(mapPath);
         setUpMap();
 
         Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
@@ -109,6 +106,10 @@ public abstract class GameMode extends State implements HandlesScore {
     }
 
     protected void setUpMap() {
+        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, camBatch);
+
+        startPositions = TrackBuilder.getPoints(tiledMap, "starting_points");
+
         // Set the normal walls
         FixtureDef wallDef = new FixtureDef();
         wallDef.filter.categoryBits = GlobalVariables.WALL_ENTITY;

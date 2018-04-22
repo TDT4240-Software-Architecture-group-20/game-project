@@ -1,4 +1,4 @@
-package car.superfun.game.googleGamePlayServices;
+package car.superfun.game.googlePlayGameServices;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -21,9 +21,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import car.superfun.game.GlobalVariables;
-import car.superfun.game.car.OpponentCarController;
+import car.superfun.game.cars.OpponentCarController;
 import car.superfun.game.scoreHandling.HandlesScore;
-import car.superfun.game.scoreHandling.Leaderboard;
 import car.superfun.game.states.GameStateManager;
 import car.superfun.game.states.State;
 

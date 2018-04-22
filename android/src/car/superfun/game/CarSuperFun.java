@@ -12,10 +12,9 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import car.superfun.game.gameModes.GameMode;
 import car.superfun.game.gameModes.gladiatorMode.GladiatorMode;
 import car.superfun.game.gameModes.raceMode.RaceMode;
-import car.superfun.game.googleGamePlayServices.GoogleGameServices;
+import car.superfun.game.googlePlayGameServices.GoogleGameServices;
 import car.superfun.game.menus.LoadingScreen;
 import car.superfun.game.menus.LoginMenu;
 import car.superfun.game.menus.MainMenu;

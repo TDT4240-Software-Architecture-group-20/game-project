@@ -10,11 +10,11 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Array;
 
 import car.superfun.game.GlobalVariables;
-import car.superfun.game.googleGamePlayServices.GoogleGameServices;
+import car.superfun.game.googlePlayGameServices.GoogleGameServices;
 import car.superfun.game.maps.TrackBuilder;
-import car.superfun.game.car.LocalCarController;
-import car.superfun.game.car.OpponentCar;
-import car.superfun.game.car.OpponentCarController;
+import car.superfun.game.cars.LocalCarController;
+import car.superfun.game.cars.OpponentCar;
+import car.superfun.game.cars.OpponentCarController;
 import car.superfun.game.gameModes.GameMode;
 import car.superfun.game.scoreHandling.Leaderboard;
 import car.superfun.game.scoreHandling.ScoreFormatter;
